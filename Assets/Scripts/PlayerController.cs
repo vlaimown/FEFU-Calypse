@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    private void Flip()
+    public void Flip()
     {
         facingRight = !facingRight;
         Vector3 scaler = transform.localScale;
