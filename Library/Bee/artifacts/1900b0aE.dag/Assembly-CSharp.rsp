@@ -346,6 +346,7 @@
 "Assets/Scripts/Dialogues/DialogTrigger.cs"
 "Assets/Scripts/Dialogues/Dialogue.cs"
 "Assets/Scripts/Dialogues/DialoguesController.cs"
+"Assets/Scripts/GoToHotel.cs"
 "Assets/Scripts/HealthBar.cs"
 "Assets/Scripts/Inventory/Inventory.cs"
 "Assets/Scripts/Inventory/Item.cs"

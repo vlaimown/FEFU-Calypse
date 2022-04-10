@@ -2,42 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    //public Inventory inventory;
 
     [SerializeField] private DialoguesController dialoguesController;
 
-    [SerializeField] private Rigidbody2D hero;
+    public Rigidbody2D hero;
+    public Transform character;
     [SerializeField] private Animator animator;
-    [SerializeField] private float speed;
+    public float speed;
 
     [SerializeField] private Vector2 direction;
 
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange = 0.5f;
 
-    public GameObject firstDialogue;
-
     public float maxspeed;
 
-    public int flag;
+    public int flag,
+               moveToHotelFlag;
+                
 
     public LayerMask enemyLayers;
 
-    public bool attackEnable;
-    public float cooldown;
-    public float maxcooldown;
+     public bool attackEnable;
 
-    private bool facingRight = true;
+     public float cooldown,
+                  maxcooldown;
+
+     public bool facingRight;
 
     private void Start()
     {
+
+        //inventory = new Inventory();
+        facingRight = true;
 
         speed = maxspeed;
         attackEnable = true;
 
         flag = 0;
+        moveToHotelFlag = 0;
 
         maxcooldown = 1f;
         cooldown = maxcooldown;
@@ -47,43 +55,45 @@ public class PlayerController : MonoBehaviour
     {
         if (dialoguesController.startFlag == 1)
         {
+        
+        moveToHotelFlag = 1;
 
-            direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-            animator.SetFloat("Horizontal", direction.x);
-            animator.SetFloat("Vertical", direction.y);
-            animator.SetFloat("Speed", direction.sqrMagnitude);
+        animator.SetFloat("Horizontal", direction.x);
+        animator.SetFloat("Vertical", direction.y);
+        animator.SetFloat("Speed", direction.sqrMagnitude);
 
-            if (cooldown > 0 && flag == 1)
-            {
-                cooldown -= Time.deltaTime;
-                attackEnable = false;
-            }
-            else if (cooldown <= 0)
-            {
-                attackEnable = true;
-                cooldown = maxcooldown;
-                flag = 0;
-            }
+        if (cooldown > 0 && flag == 1)
+        {
+            cooldown -= Time.deltaTime;
+            attackEnable = false;
+        }
+        else if (cooldown <= 0)
+        {
+            attackEnable = true;
+            cooldown = maxcooldown;
+            flag = 0;
+        }
 
-            hero.MovePosition(hero.position + direction * speed * Time.deltaTime);
+        hero.MovePosition(hero.position + direction * speed * Time.deltaTime);
+        
+        if (facingRight == true && direction.x < 0)
+        {
+            Flip();
+        }
 
-            if (facingRight == true && direction.x < 0)
-            {
-                Flip();
-            }
+        else if (facingRight == false && direction.x > 0)
+        {
+            Flip();
+        }
 
-            else if (facingRight == false && direction.x > 0)
-            {
-                Flip();
-            }
-
-            if (Input.GetButtonDown("Fire1") && (attackEnable == true) && (cooldown == 1) && flag == 0)
-            {
-                Attack();
-            }
+        if (Input.GetButtonDown("Fire1") && (attackEnable == true) && (cooldown == 1) && flag == 0)
+        {
+            Attack();
         }
     }
+}
 
     private void Attack()
     {
