@@ -57,11 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Dialogues\DialogTrigger.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemPick.cs" />
     <Compile Include="Assets\Scripts\Dialogues\DialogManager.cs" />
     <Compile Include="Assets\Scripts\Dialogues\DialoguesController.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventorySlot.cs" />
     <Compile Include="Assets\Scripts\GoToHotel.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventoryUI.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item.cs" />
     <Compile Include="Assets\Scripts\SortingLayers.cs" />
     <Compile Include="Assets\Scripts\Dialogues\Dialogue.cs" />

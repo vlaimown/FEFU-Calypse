@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GoToHotel : MonoBehaviour
 {
     public Transform hotelPoint;
-    public GameObject buttonToHotel;
+    public Image buttonToHotel;
 
     public int goToHotelFlag;
 
@@ -25,9 +25,9 @@ public class GoToHotel : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Vector2.Distance(player.hero.transform.position, TriggerPoint) <= 3.3f && player.moveToHotelFlag == 1)
+        if (Vector2.Distance(player.hero.transform.position, TriggerPoint) <= 3.5f && player.moveToHotelFlag == 1)
         {
-            buttonToHotel.SetActive(true);
+            buttonToHotel.gameObject.SetActive(true);
             if (Input.GetKey("e"))
             {
                 goToHotelFlag = 1;
@@ -36,7 +36,7 @@ public class GoToHotel : MonoBehaviour
                 {
                     heroCircleCollider.enabled = false;
 
-                    if (player.character.position.x > TriggerPoint.x && player.facingRight == true)
+                    if ((player.character.position.x > TriggerPoint.x && player.facingRight == true) || (player.character.position.x < TriggerPoint.x && player.facingRight == false))
                 {
                     player.Flip();
                 }
@@ -45,14 +45,14 @@ public class GoToHotel : MonoBehaviour
 
                 Vector3 defaultScale = player.character.transform.localScale;
                 Vector3 scaler = player.character.transform.localScale;
-                if (scaler.y > 0.21f)
+                if (scaler.y > 0.2f)
                     {
                         scaler.y -= Time.fixedDeltaTime;
-                        if (scaler.x >= -0.21f)
+                        if (scaler.x >= -0.2f)
                         {
                             scaler.x -= Time.fixedDeltaTime;
                         }
-                        else if (scaler.x <= 0.21f)
+                        else if (scaler.x <= 0.2f)
                         {
                             scaler.x += Time.fixedDeltaTime;
                         }
@@ -61,18 +61,18 @@ public class GoToHotel : MonoBehaviour
 
                     //player.character.LookAt(hotelPoint);
 
-                    if (Vector2.Distance(player.character.position, hotelPoint.position) < 0.06f)
+                    if (Vector2.Distance(player.character.position, hotelPoint.position) < 0.21f)
                     {
                         heroCircleCollider.enabled = true;
                         SceneManager.LoadScene(1);
                         goToHotelFlag = 0;
                         player.character.transform.localScale = defaultScale;
-                }
+                    }
                 }
             }
         else
         {
-            buttonToHotel.SetActive(false);
+            buttonToHotel.gameObject.SetActive(false);
         }
         }
     }

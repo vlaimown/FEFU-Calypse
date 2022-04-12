@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D hero;
     public Transform character;
     [SerializeField] private Animator animator;
-    public float speed;
 
     [SerializeField] private Vector2 direction;
 
@@ -21,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float attackRange = 0.5f;
 
     public float maxspeed;
+    public float speed;
 
     public int flag,
                moveToHotelFlag;
@@ -37,7 +37,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-
+        hero = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         //inventory = new Inventory();
         facingRight = true;
 

@@ -349,7 +349,10 @@
 "Assets/Scripts/GoToHotel.cs"
 "Assets/Scripts/HealthBar.cs"
 "Assets/Scripts/Inventory/Inventory.cs"
+"Assets/Scripts/Inventory/InventorySlot.cs"
+"Assets/Scripts/Inventory/InventoryUI.cs"
 "Assets/Scripts/Inventory/Item.cs"
+"Assets/Scripts/Inventory/ItemPick.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/SortingLayers.cs"
 -langversion:8.0
