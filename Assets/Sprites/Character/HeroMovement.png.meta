@@ -109,10 +109,10 @@ TextureImporter:
       name: HeroMovement_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2
         y: 67
-        width: 374
-        height: 793
+        width: 375
+        height: 795
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,9 +130,9 @@ TextureImporter:
       name: HeroMovement_1
       rect:
         serializedVersion: 2
-        x: 493
-        y: 67
-        width: 374
+        x: 491
+        y: 65
+        width: 375
         height: 795
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -154,7 +154,7 @@ TextureImporter:
         x: 985
         y: 67
         width: 375
-        height: 793
+        height: 795
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,7 +196,7 @@ TextureImporter:
         x: 2005
         y: 66
         width: 374
-        height: 793
+        height: 795
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

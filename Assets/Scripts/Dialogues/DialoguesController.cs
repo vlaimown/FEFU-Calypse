@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class DialoguesController : MonoBehaviour
 {
-    //public Dialogue dialogue;
     public DialogManager dialogueManager;
     public DialogTrigger dialogueTrigger;
     public PlayerController playerController;
@@ -16,8 +15,6 @@ public class DialoguesController : MonoBehaviour
 
     public Intro gameWillStart;
 
-    //[SerializeField] private float gameWillStartIn;
-
     private void Start()
     {
         startFlag = 0;
@@ -25,10 +22,14 @@ public class DialoguesController : MonoBehaviour
         Intro.SetActive(true);
     }
 
+
+
     private void FixedUpdate()
     {
         if (gameWillStart.gameWillStartIn > 0 && gameWillStart.flagIntro == 1)
         {
+            playerController.speed = 0;
+            playerController.attackEnable = false;
             gameWillStart.gameWillStartIn -= Time.deltaTime;
         }
         if (gameWillStart.gameWillStartIn <= 0 && gameWillStart.flagIntro == 1)
@@ -46,4 +47,7 @@ public class DialoguesController : MonoBehaviour
             }
         }
     }
+
+
+
 }

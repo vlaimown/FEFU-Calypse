@@ -25,6 +25,7 @@ public class Intro : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 0;
         i = 0;
         firstCutscene = 0;
         //opening = new Queue<Image>();
@@ -44,10 +45,11 @@ public class Intro : MonoBehaviour
         {
             windowINV.windowInventory.SetActive(false);
             windowIntro.gameObject.SetActive(false);
-            gameWillStartIn = 0.5f;
+            gameWillStartIn = 0.65f;
             flagIntro = 1;
             firstCutscene = 1;
             player.waittime = 2.5f;
+            Time.timeScale = 1;
 
             return;
         }

@@ -18,10 +18,13 @@ public class DialogManager : MonoBehaviour
     public GameObject dialogueWindow;
     private DialoguesController dialoguesController;
 
+    [SerializeField] DialogTrigger secondDialogue;
+
     [SerializeField] private PlayerController Hero;
 
-    public Text nameText;
-    public Text dialogueText;
+    public Text nameText,
+                dialogueText;
+
     public Queue<string> sentences;
 
     private void Start()
@@ -66,11 +69,13 @@ public class DialogManager : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
-       dialogueText.text = sentence;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+        //dialogueText.text = sentence;
     }
 
 
-    /*IEnumerable TypeSentence(string sentence)
+    IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
@@ -78,7 +83,7 @@ public class DialogManager : MonoBehaviour
             dialogueText.text += letter;
             yield return null;
         }
-    }*/
+    }
 
     public void EndDialogue()
     {
@@ -97,7 +102,7 @@ public class DialogManager : MonoBehaviour
 
     private void Update()
     {
-        if (Hero.waittime > 0 && introLink.firstCutscene == 1 && counter == 0)
+        if (Hero.waittime > 0 && introLink.firstCutscene == 1 && counter == 0 && introLink.gameWillStartIn < 0)
         {
             Hero.waittime -= Time.deltaTime;
             if (Hero.waittime < 0)
@@ -105,6 +110,11 @@ public class DialogManager : MonoBehaviour
                 introLink.firstCutscene = 0;
                 firstCutsceneImage.gameObject.SetActive(false);
                 cutsceneBackgroundImage.gameObject.SetActive(false);
+                Hero.speed = Hero.maxspeed;
+                Hero.attackEnable = true;
+                dialogueWindow.SetActive(true);
+
+                secondDialogue.TriggerDialog();
             }
         }
     }

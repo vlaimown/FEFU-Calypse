@@ -25,7 +25,7 @@ public class GoToHotel : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Vector2.Distance(player.hero.transform.position, TriggerPoint) <= 3.5f && player.moveToHotelFlag == 1)
+        if (Vector2.Distance(player.hero.transform.position, TriggerPoint) <= 3.3f && player.moveToHotelFlag == 1)
         {
             buttonToHotel.gameObject.SetActive(true);
             if (Input.GetKey("e"))
@@ -45,14 +45,14 @@ public class GoToHotel : MonoBehaviour
 
                 Vector3 defaultScale = player.character.transform.localScale;
                 Vector3 scaler = player.character.transform.localScale;
-                if (scaler.y > 0.2f)
+                if (scaler.y > 0.215f)
                     {
                         scaler.y -= Time.fixedDeltaTime;
-                        if (scaler.x >= -0.2f)
+                        if (scaler.x >= -0.215f)
                         {
                             scaler.x -= Time.fixedDeltaTime;
                         }
-                        else if (scaler.x <= 0.2f)
+                        else if (scaler.x <= 0.215f)
                         {
                             scaler.x += Time.fixedDeltaTime;
                         }
