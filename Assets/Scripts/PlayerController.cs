@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     //public Inventory inventory;
 
+    public float waittime;
+
     [SerializeField] private DialoguesController dialoguesController;
 
     public Rigidbody2D hero;

@@ -11,29 +11,42 @@ public class ItemPick : MonoBehaviour
     public PlayerController character;
     public Image IconButton;
     [SerializeField] float radius;
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        IconButton.gameObject.SetActive(true);
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        IconButton.gameObject.SetActive(false);
+    }
+
     private void FixedUpdate()
     {
-        if (Vector2.Distance(character.hero.transform.position, gameObject.transform.position) <= radius)
+        if (Vector2.Distance(character.hero.transform.position, transform.position) <= radius)
         {
-            IconButton.gameObject.SetActive(true);
             if (Input.GetKey("f"))
             {
-                if (inventory.itemList.Count < inventory.space) 
+                if (inventory.itemList.Count < inventory.space)
                 {
                     Destroy(gameObject);
                     Inventory.instance.Add(item);
-                    IconButton.gameObject.SetActive(false);
+                }
+                else
+                {
+                    Debug.Log("Инвентарь переполнен");
                 }
             }
-        }else
+        }
+        /*else
         {
             IconButton.gameObject.SetActive(false);
-        }
+        }*/
     }
 }

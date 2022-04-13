@@ -14,24 +14,24 @@ public class DialoguesController : MonoBehaviour
     public int coun = 0;
     public GameObject Intro;
 
-    [SerializeField] private float gameWillStartIn;
+    public Intro gameWillStart;
+
+    //[SerializeField] private float gameWillStartIn;
 
     private void Start()
     {
-
         startFlag = 0;
-        gameWillStartIn = 3f;
 
         Intro.SetActive(true);
     }
 
     private void FixedUpdate()
     {
-        if (gameWillStartIn > 0)
+        if (gameWillStart.gameWillStartIn > 0 && gameWillStart.flagIntro == 1)
         {
-            gameWillStartIn -= Time.deltaTime;
+            gameWillStart.gameWillStartIn -= Time.deltaTime;
         }
-        if (gameWillStartIn <= 0)
+        if (gameWillStart.gameWillStartIn <= 0 && gameWillStart.flagIntro == 1)
         {
             if (startFlag == 0)
             {

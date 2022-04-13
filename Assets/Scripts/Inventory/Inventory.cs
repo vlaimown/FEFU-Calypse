@@ -14,11 +14,12 @@ public class Inventory : MonoBehaviour
     public GameObject windowInventory;
     public bool inventoryOpened = false;
 
-    public int space = 20;
+    public int space;
 
     private void Awake()
     {
         instance = this;
+        windowInventory.SetActive(true);
     }
 
     private void Update()
