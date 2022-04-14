@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    /*public DialoguesController dialoguesController;
+    private Image quest;
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
-    }
+        if (dialoguesController.fourthDialogueFlag == 1)
+        {
+
+        }
+    }*/
 }

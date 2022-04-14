@@ -15,7 +15,7 @@ public class DialoguesController : MonoBehaviour
 
     public DialogTrigger thirdDialogue;
     public DialogTrigger fourthDialogue;
-    private int fourthDialogueFlag = 0;
+    public int fourthDialogueFlag = 0;
     public float radius;
 
     public int startFlag;
