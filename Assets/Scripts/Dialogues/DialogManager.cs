@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
+    public int PrayFlag;
+    public int dialogueNumber;
+
     public Intro introLink;
     [SerializeField] private Image firstCutsceneImage;
     [SerializeField] private Image cutsceneBackgroundImage;
@@ -14,6 +17,7 @@ public class DialogManager : MonoBehaviour
 
     public Image characterIcon;
     public Sprite heroIcon;
+    public Sprite ZagumIcon;
 
     public GameObject dialogueWindow;
     private DialoguesController dialoguesController;
@@ -29,6 +33,8 @@ public class DialogManager : MonoBehaviour
 
     private void Start()
     {
+        dialogueNumber = 1;
+        PrayFlag = 0;
         counter = 0;
         sentences = new Queue<string>();
     }
@@ -40,13 +46,14 @@ public class DialogManager : MonoBehaviour
         nameText.text = dialog.name;
         if (dialog.name == "Главный герой")
         {
-            nameText.color = Color.blue;
+            nameText.color = new Color(0, 218, 255);
             characterIcon.sprite = heroIcon;
         }
 
-        if (dialog.name == "Загумённов")
+        if (dialog.name == "Алексей Андреевич Загумённов")
         {
             nameText.color = Color.yellow;
+            characterIcon.sprite = ZagumIcon;
         }
 
         sentences.Clear();
@@ -68,10 +75,35 @@ public class DialogManager : MonoBehaviour
             return;
         }
 
+        #region
+        if (dialogueNumber == 3 && (counter == 2 || counter == 4 || counter == 6 || counter == 7))
+        {
+            nameText.text = "Алексей Андреевич Загумённов";
+            nameText.color = Color.yellow;
+            characterIcon.sprite = ZagumIcon;
+        }
+        #endregion
+
+        #region
+        else if (dialogueNumber == 4 && (counter == 1 || counter == 3 || counter == 5))
+        {
+            nameText.text = "Алексей Андреевич Загумённов";
+            nameText.color = Color.yellow;
+            characterIcon.sprite = ZagumIcon;
+        }
+        #endregion
+
+
+        else
+        {
+            nameText.text = "Главный герой";
+            nameText.color = new Color(0, 218, 255);
+            characterIcon.sprite = heroIcon;
+        }
+
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
-        //dialogueText.text = sentence;
     }
 
 
@@ -87,6 +119,7 @@ public class DialogManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        dialogueNumber++;
         dialogueWindow.SetActive(false);
         Time.timeScale = 1;
         counter = 0;
@@ -110,11 +143,10 @@ public class DialogManager : MonoBehaviour
                 introLink.firstCutscene = 0;
                 firstCutsceneImage.gameObject.SetActive(false);
                 cutsceneBackgroundImage.gameObject.SetActive(false);
-                Hero.speed = Hero.maxspeed;
-                Hero.attackEnable = true;
                 dialogueWindow.SetActive(true);
 
                 secondDialogue.TriggerDialog();
+                PrayFlag = 1;
             }
         }
     }

@@ -6,10 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    //public Inventory inventory;
-
     public float waittime;
 
+    [SerializeField] private DialogManager dialoguesManager;
     [SerializeField] private DialoguesController dialoguesController;
 
     public Rigidbody2D hero;
@@ -41,7 +40,6 @@ public class PlayerController : MonoBehaviour
     {
         hero = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        //inventory = new Inventory();
         facingRight = true;
 
         speed = maxspeed;
@@ -131,10 +129,21 @@ public class PlayerController : MonoBehaviour
 
     public void Flip()
     {
-        facingRight = !facingRight;
-        Vector3 scaler = transform.localScale;
-        scaler.x *= -1;
+        if (animator.GetBool("ReadyToGo") == true) {
+            facingRight = !facingRight;
+            Vector3 scaler = transform.localScale;
+            scaler.x *= -1;
 
-        transform.localScale = scaler;
+            transform.localScale = scaler;
+        }
+    }
+
+    public void StopPray()
+    {
+        animator.SetBool("IsPraying", false);
+        speed = maxspeed;
+        attackEnable = true;
+        dialoguesManager.dialogueWindow.SetActive(true);
+        dialoguesController.thirdDialogue.TriggerDialog();
     }
 }

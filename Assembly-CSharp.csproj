@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Dialogues\Dialogue.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\GameController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
