@@ -7,13 +7,18 @@ public class GameController : MonoBehaviour
 {
     public DialoguesController dialoguesController;
     public DialogManager dialogManager;
-    //public ItemPick itemPick;
+    public Inventory inventory;
 
     public Animator anim;
+    private int bottleFlag = 0;
 
     public Text firstQuest;
     public Text secondQuest;
     public Text thirdQuest;
+    public Text fourthQuest;
+
+    public GameObject zombie_1;
+
     public Image backgroundQuest;
     public Text questText;
 
@@ -45,6 +50,16 @@ public class GameController : MonoBehaviour
                 questText.gameObject.SetActive(true);
                 //Destroy(dialoguesController.fourthDialogue.gameObject);
             }
+        }
+
+        if (inventory.itemList.Exists(item => item.name == "Slavda Bottle (1)") && bottleFlag == 0)
+        {
+            dialoguesController.fourthDialogueFlag = 2;
+            thirdQuest.gameObject.SetActive(false);
+            backgroundQuest.gameObject.SetActive(false);
+            questText.gameObject.SetActive(false);
+            Instantiate(zombie_1, new Vector2(-7, -2), Quaternion.identity);
+            bottleFlag = 1;
         }
 
         

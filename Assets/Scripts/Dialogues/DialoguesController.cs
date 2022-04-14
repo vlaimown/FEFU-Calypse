@@ -69,7 +69,7 @@ public class DialoguesController : MonoBehaviour
             }
         }
 
-        if (Vector2.Distance(playerController.hero.transform.position, fourthDialogue.transform.position) < fourthDialogue.radius && fourthDialogueFlag != 1)
+        if (Vector2.Distance(playerController.hero.transform.position, fourthDialogue.transform.position) < fourthDialogue.radius && fourthDialogueFlag == 0)
         {
             dialogueManager.dialogueWindow.SetActive(true);
             fourthDialogue.TriggerDialog();

@@ -46,7 +46,7 @@ public class DialogManager : MonoBehaviour
         nameText.text = dialog.name;
         if (dialog.name == "Главный герой")
         {
-            nameText.color = new Color(0, 218, 255);
+            nameText.color = Color.blue;
             characterIcon.sprite = heroIcon;
         }
 
@@ -76,7 +76,7 @@ public class DialogManager : MonoBehaviour
         }
 
         #region
-        if (dialogueNumber == 3 && (counter == 2 || counter == 4 || counter == 6 || counter == 7))
+        if (dialogueNumber == 3 && (counter == 2 || counter == 4 || counter == 7 || counter == 8))
         {
             nameText.text = "Алексей Андреевич Загумённов";
             nameText.color = Color.yellow;
@@ -97,7 +97,7 @@ public class DialogManager : MonoBehaviour
         else
         {
             nameText.text = "Главный герой";
-            nameText.color = new Color(0, 218, 255);
+            nameText.color = Color.blue;
             characterIcon.sprite = heroIcon;
         }
 
