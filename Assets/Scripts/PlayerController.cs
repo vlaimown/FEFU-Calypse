@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     public float waittime;
 
+    [SerializeField] GameController gameController;
+
     [SerializeField] private DialogManager dialoguesManager;
     [SerializeField] private DialoguesController dialoguesController;
 
@@ -144,6 +146,9 @@ public class PlayerController : MonoBehaviour
         speed = maxspeed;
         attackEnable = true;
         dialoguesManager.dialogueWindow.SetActive(true);
+        gameController.firstQuest.gameObject.SetActive(false);
+        gameController.backgroundQuest.gameObject.SetActive(false);
+        gameController.questText.gameObject.SetActive(false);
         dialoguesController.thirdDialogue.TriggerDialog();
     }
 }
