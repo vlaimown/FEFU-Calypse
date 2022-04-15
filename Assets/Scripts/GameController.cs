@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+
+
     public DialoguesController dialoguesController;
     public DialogManager dialogManager;
     public Inventory inventory;
@@ -63,9 +65,9 @@ public class GameController : MonoBehaviour
         }
 
         
-        /*if (dialoguesController.fourthDialogueFlag == 1)
+        if (dialoguesController.fourthDialogueFlag == 1)
         {
 
-        }*/
+        }
     }
 }
