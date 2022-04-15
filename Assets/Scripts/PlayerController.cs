@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public Transform character;
     [SerializeField] private Animator animator;
 
-    [SerializeField] private Vector2 direction;
+    public Vector2 direction;
 
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange = 0.5f;
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
      public bool facingRight;
 
     private void Start()
-    {
+    { 
         hero = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         facingRight = true;

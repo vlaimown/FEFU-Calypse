@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Dialogues\DialogTrigger.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemPick.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Zombie.cs" />
     <Compile Include="Assets\Scripts\Dialogues\DialogManager.cs" />
     <Compile Include="Assets\Scripts\Dialogues\DialoguesController.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventorySlot.cs" />
